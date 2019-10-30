@@ -1,16 +1,44 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+    <title>Demo Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demo store</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    test
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-3">
+        <a class="navbar-brand" href="#">Fintech Bank</a>
+    </nav>
+
+    <main role="main" class="container">
+
+        <div class="row">
+
+            <div class="col-12 mt-5">
+                <div class="my-5">
+                    <h1 class="my-5 text-light">Identification Demo</h1>
+                    <p class="mb-5 text-light">
+                        Using <a href="https://appauth.io/" class="text-bold">AppAuth for JS</a> for integration to
+                        <a href="https://www.verify-u.com/" class="text-bold">verify-u</a>  as an identification provider
+                    </p>
+
+                    <div class="mt-5  ">
+                        <button class="btn btn-primary px-4 py-3 font-weight-bold m-2 mb-3" id="authorize">
+                            Reusable identification
+                        </button>
+                        <button class="btn btn-secondary px-4 py-3 font-weight-bold m-2 mb-3"
+                                id="authorize_anon">
+                            One time identification
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main><!-- /.container -->
+    <script onload="require('app.js').default()" src="/js/app.js"></script>
 </body>
-<script onload="require('app.js').default()" src="/js/app.js"></script>
 </html>

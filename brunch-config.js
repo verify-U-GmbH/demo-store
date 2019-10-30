@@ -2,10 +2,12 @@ module.exports = {
   files: {
     javascripts: {
       joinTo: {
-        'js/app.js':  [/^(?!app)/,/^app/]
+        'js/app.js':  [/^app/]
       }
     },
-    stylesheets: {joinTo: 'app.css'}
+    stylesheets: {
+      joinTo: 'app.css'
+    }
   },
 
   plugins: {
