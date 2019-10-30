@@ -1,0 +1,24 @@
+{
+  "name": "demo-store",
+  "description": "Demo store",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "brunch watch --server",
+    "prod": "brunch build --production"
+  },
+  "dependencies": {
+    "@openid/appauth": "^1.2.6"
+  },
+  "devDependencies": {
+    "auto-reload-brunch": "^2.0.0",
+    "babel-brunch": "7.0.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "brunch": "^2.10.17",
+    "clean-css-brunch": "2.10.0",
+    "html-pages-brunch": "2.8.0",
+    "javascript-brunch": "2.10.0",
+    "standard": "12.0.1",
+    "uglify-js-brunch": "2.10.0"
+  }
+}
