@@ -6,6 +6,7 @@
     <title>Demo store</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="app.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-3">
@@ -25,10 +26,13 @@
                     </p>
 
                     <div class="mt-5  ">
-                        <button class="btn btn-primary px-4 py-3 font-weight-bold m-2 mb-3" id="authorize">
+                        <button class="btn btn-primary px-4 py-3 font-weight-bold m-2 mb-3"
+                                onclick="app.authorize()"
+                                id="authorize">
                             Reusable identification
                         </button>
                         <button class="btn btn-secondary px-4 py-3 font-weight-bold m-2 mb-3"
+                                onclick="app.authorizeAnon()"
                                 id="authorize_anon">
                             One time identification
                         </button>
@@ -39,6 +43,10 @@
         </div>
 
     </main><!-- /.container -->
-    <script onload="require('app.js').default()" src="/js/app.js"></script>
+
+    <div id="snackbar">Application loaded</div>
+
+    <script onload="require('app.js')" src="/js/app.js"></script>
+
 </body>
 </html>
