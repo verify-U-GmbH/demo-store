@@ -46,20 +46,25 @@ h1 {
 
 @-webkit-keyframes fadein {
     from {bottom: 0; opacity: 0;}
-    to {bottom: 0px; opacity: 1;}
+    to {bottom: 0; opacity: 1;}
 }
 
 @keyframes fadein {
     from {bottom: 0; opacity: 0;}
-    to {bottom: 0px; opacity: 1;}
+    to {bottom: 0; opacity: 1;}
 }
 
 @-webkit-keyframes fadeout {
-    from {bottom: 0px; opacity: 1;}
+    from {bottom: 0; opacity: 1;}
     to {bottom: 0; opacity: 0; visibility: hidden;}
 }
 
 @keyframes fadeout {
     from {bottom: 0; opacity: 1;}
     to {bottom: 0; opacity: 0; visibility: hidden;}
+}
+
+.navbar-text {
+    width: 100%;
+    margin-right: 1rem;
 }

@@ -8,6 +8,10 @@ module.exports = {
     }
   },
 
+  conventions: {
+    assets: /static/
+  },
+
   plugins: {
     babel: {
       ignore: [/vendor/]
