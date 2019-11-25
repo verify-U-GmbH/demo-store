@@ -49,8 +49,6 @@ if (getUrlParameter('code')) {
   init()
 }
 
-
-
 const makeAuthorizationRequest = () => {
   // create a request
   const request = new AuthorizationRequest({
@@ -76,14 +74,25 @@ const makeAnonAuthorizationRequest = () => {
   makeAuthorizationRequest()
 }
 
-window.app = {}
-window.app.authorize = () => {
-  console.log('authorize')
+const makeF2fAuthorizationRequest = () => {
+  scope = 'f2f'
   makeAuthorizationRequest()
 }
 
-window.app.authorizeAnon = () => {
-  console.log('authorizeAnon')
-  makeAnonAuthorizationRequest()
+window.app = {
+  authorize() {
+    console.log('authorize')
+    makeAuthorizationRequest()
+  },
+  authorizeAnon() {
+    console.log('authorizeAnon')
+    makeAnonAuthorizationRequest()
+  },
+  authorizeF2f() {
+    console.log('authorizeF2f')
+    makeF2fAuthorizationRequest()
+  }
+
 }
+
 
