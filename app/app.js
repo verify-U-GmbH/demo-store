@@ -8,12 +8,13 @@ import {
 const openIdConnectUrl = 'https://selfid.verify-u.com/oauthconfig'
 
 /* example client configuration */
-const clientId = 'DEMO_PUB'
+let clientId = 'DEMO_PUB'
 const redirectUri = window.origin
 
 let scope = 'default'
 let state = 'random_state'
 let configuration = null
+let extras = {'prompt': 'consent', 'access_type': 'offline'}
 
 const getUrlParameter = (name) => {
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
@@ -57,7 +58,7 @@ const makeAuthorizationRequest = () => {
     scope: scope,
     response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
     state: state,
-    extras: {'prompt': 'consent', 'access_type': 'offline'}
+    extras: extras
   })
 
   if (configuration) {
@@ -79,6 +80,29 @@ const makeF2fAuthorizationRequest = () => {
   makeAuthorizationRequest()
 }
 
+const makeGPAuthorizationRequest = () => {
+  scope = 'giropay'
+  extras['iban'] = 'DE02120300000000202051';
+  makeAuthorizationRequest()
+}
+
+const makeEsignAuthorizationRequest = () => {
+  clientId = 'ESIGN_PUB'
+  scope = 'esign'
+  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579';
+  extras['msisdn'] = '4915154651852';
+  makeAuthorizationRequest()
+}
+
+const makeGiropayEsignAuthorizationRequest = () => {
+  clientId = 'ESIGN_PUB'
+  scope = 'giropay_esign'
+  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579';
+  extras['msisdn'] = '4915154651852';
+  extras['iban'] = 'DE02120300000000202051';
+  makeAuthorizationRequest()
+}
+
 window.app = {
   authorize() {
     console.log('authorize')
@@ -91,6 +115,18 @@ window.app = {
   authorizeF2f() {
     console.log('authorizeF2f')
     makeF2fAuthorizationRequest()
+  },
+  authorizeGP() {
+    console.log('authorizeGP')
+    makeGPAuthorizationRequest()
+  },
+  authorizeEsign() {
+    console.log('authorizeEsign')
+    makeEsignAuthorizationRequest()
+  },
+  authorizeGiropayEsign() {
+    console.log('authorizeGiropayEsign')
+    makeGiropayEsignAuthorizationRequest()
   }
 
 }
