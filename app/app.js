@@ -82,24 +82,25 @@ const makeF2fAuthorizationRequest = () => {
 
 const makeGPAuthorizationRequest = () => {
   scope = 'giropay'
-  extras['iban'] = 'DE02120300000000202051';
+  extras['iban'] = 'DE02120300000000202051'; // example
   makeAuthorizationRequest()
 }
 
 const makeEsignAuthorizationRequest = () => {
   clientId = 'ESIGN_PUB'
   scope = 'esign'
-  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579';
-  extras['msisdn'] = '4915154651852';
+  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579'; // example
+  extras['email'] = 'noreply@verify-u.com'; // example
+  extras['msisdn'] = '+4915112345678'; // example
   makeAuthorizationRequest()
 }
 
 const makeGiropayEsignAuthorizationRequest = () => {
   clientId = 'ESIGN_PUB'
   scope = 'giropay_esign'
-  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579';
-  extras['msisdn'] = '4915154651852';
-  extras['iban'] = 'DE02120300000000202051';
+  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579'; // example
+  extras['msisdn'] = '+4915112345678'; // example
+  extras['iban'] = 'DE02120300000000202051'; // example
   makeAuthorizationRequest()
 }
 
