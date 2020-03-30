@@ -51,6 +51,12 @@ if (getUrlParameter('code')) {
 }
 
 const makeAuthorizationRequest = () => {
+  // set extra values
+  extras['email'] = document.querySelector("#inputEmail").value;
+  extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
+  extras['iban'] = document.querySelector("#inputIban").value; 
+  extras['document_id'] = document.querySelector("#inputDocumentId").value; 
+
   // create a request
   const request = new AuthorizationRequest({
     client_id: clientId,
@@ -82,26 +88,24 @@ const makeF2fAuthorizationRequest = () => {
 
 const makeGPAuthorizationRequest = () => {
   scope = 'giropay'
-  extras['iban'] = 'DE02120300000000202051'; // example
   makeAuthorizationRequest()
 }
 
 const makeEsignAuthorizationRequest = () => {
   clientId = 'ESIGN_PUB'
   scope = 'esign'
-  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579'; // example
-  extras['email'] = 'noreply@verify-u.com'; // example
-  extras['msisdn'] = '+4915112345678'; // example
   makeAuthorizationRequest()
 }
 
 const makeGiropayEsignAuthorizationRequest = () => {
   clientId = 'ESIGN_PUB'
   scope = 'giropay_esign'
-  extras['document_id'] = 'b1fd52e4-5211-4d13-afa9-a3b741204579'; // example
-  extras['msisdn'] = '+4915112345678'; // example
-  extras['iban'] = 'DE02120300000000202051'; // example
   makeAuthorizationRequest()
+}
+
+const toggleClientDataVisibility = () => {
+  var el = document.getElementById("clientdata");
+  el.classList.toggle('invisible');
 }
 
 window.app = {
@@ -128,6 +132,10 @@ window.app = {
   authorizeGiropayEsign() {
     console.log('authorizeGiropayEsign')
     makeGiropayEsignAuthorizationRequest()
+  },
+  toggleClientData() {
+    console.log('toggleClientDataVisibility')
+    toggleClientDataVisibility()
   }
 
 }
