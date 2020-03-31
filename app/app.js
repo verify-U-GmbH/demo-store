@@ -52,10 +52,10 @@ if (getUrlParameter('code')) {
 
 const makeAuthorizationRequest = () => {
   // set extra values
-  extras['email'] = document.querySelector("#inputEmail").value;
-  extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
-  extras['iban'] = document.querySelector("#inputIban").value; 
-  extras['document_id'] = document.querySelector("#inputDocumentId").value; 
+  // extras['email'] = document.querySelector("#inputEmail").value;
+  // extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
+  // extras['iban'] = document.querySelector("#inputIban").value; 
+  // extras['document_id'] = document.querySelector("#inputDocumentId").value; 
 
   // create a request
   const request = new AuthorizationRequest({
