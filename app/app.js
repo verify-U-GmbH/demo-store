@@ -8,12 +8,13 @@ import {
 const openIdConnectUrl = 'https://selfid.verify-u.com/oauthconfig'
 
 /* example client configuration */
-const clientId = 'DEMO_PUB'
+let clientId = 'DEMO_PUB'
 const redirectUri = window.origin
 
 let scope = 'default'
 let state = `random_state_${parseInt(Math.random()* 100000)}`
 let configuration = null
+let extras = {'prompt': 'consent', 'access_type': 'offline'}
 
 const getUrlParameter = (name) => {
   name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]')
@@ -50,6 +51,12 @@ if (getUrlParameter('code')) {
 }
 
 const makeAuthorizationRequest = () => {
+  // set extra values
+  extras['email'] = document.querySelector("#inputEmail").value;
+  extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
+  extras['iban'] = document.querySelector("#inputIban").value; 
+  extras['document_id'] = document.querySelector("#inputDocumentId").value; 
+
   // create a request
   const request = new AuthorizationRequest({
     client_id: clientId,
@@ -57,7 +64,7 @@ const makeAuthorizationRequest = () => {
     scope: scope,
     response_type: AuthorizationRequest.RESPONSE_TYPE_CODE,
     state: state,
-    extras: {'prompt': 'consent', 'access_type': 'offline'}
+    extras: extras
   })
 
   if (configuration) {
@@ -79,6 +86,28 @@ const makeF2fAuthorizationRequest = () => {
   makeAuthorizationRequest()
 }
 
+const makeGPAuthorizationRequest = () => {
+  scope = 'giropay'
+  makeAuthorizationRequest()
+}
+
+const makeEsignAuthorizationRequest = () => {
+  clientId = 'ESIGN_PUB'
+  scope = 'esign'
+  makeAuthorizationRequest()
+}
+
+const makeGiropayEsignAuthorizationRequest = () => {
+  clientId = 'ESIGN_PUB'
+  scope = 'giropay_esign'
+  makeAuthorizationRequest()
+}
+
+const toggleClientDataVisibility = () => {
+  var el = document.getElementById("clientdata");
+  el.classList.toggle('invisible');
+}
+
 window.app = {
   authorizeAuto() {
     console.log('authorizeAuto')
@@ -87,6 +116,22 @@ window.app = {
   authorizeF2f() {
     console.log('authorizeF2f')
     makeF2fAuthorizationRequest()
+  },
+  authorizeGP() {
+    console.log('authorizeGP')
+    makeGPAuthorizationRequest()
+  },
+  authorizeEsign() {
+    console.log('authorizeEsign')
+    makeEsignAuthorizationRequest()
+  },
+  authorizeGiropayEsign() {
+    console.log('authorizeGiropayEsign')
+    makeGiropayEsignAuthorizationRequest()
+  },
+  toggleClientData() {
+    console.log('toggleClientDataVisibility')
+    toggleClientDataVisibility()
   }
 }
 
