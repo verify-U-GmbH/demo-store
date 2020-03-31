@@ -12,7 +12,7 @@ const clientId = 'DEMO_PUB'
 const redirectUri = window.origin
 
 let scope = 'default'
-let state = 'random_state'
+let state = `random_state_${parseInt(Math.random()* 100000)}`
 let configuration = null
 
 const getUrlParameter = (name) => {
@@ -69,7 +69,7 @@ const makeAuthorizationRequest = () => {
   }
 }
 
-const makeAnonAuthorizationRequest = () => {
+const makeAutoAuthorizationRequest = () => {
   scope = 'fasttrack'
   makeAuthorizationRequest()
 }
@@ -80,19 +80,14 @@ const makeF2fAuthorizationRequest = () => {
 }
 
 window.app = {
-  authorize() {
-    console.log('authorize')
-    makeAuthorizationRequest()
-  },
-  authorizeAnon() {
-    console.log('authorizeAnon')
-    makeAnonAuthorizationRequest()
+  authorizeAuto() {
+    console.log('authorizeAuto')
+    makeAutoAuthorizationRequest()
   },
   authorizeF2f() {
     console.log('authorizeF2f')
     makeF2fAuthorizationRequest()
   }
-
 }
 
 
