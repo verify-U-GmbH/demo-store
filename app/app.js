@@ -50,12 +50,14 @@ if (getUrlParameter('code')) {
   init()
 }
 
-const makeAuthorizationRequest = () => {
-  // set extra values
+const initValues = () => {
   extras['email'] = document.querySelector("#inputEmail").value;
-  extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
-  extras['iban'] = document.querySelector("#inputIban").value; 
-  extras['document_id'] = document.querySelector("#inputDocumentId").value; 
+  extras['msisdn'] = document.querySelector("#inputMSISDN").value;
+  extras['iban'] = document.querySelector("#inputIban").value;
+  extras['document_id'] = document.querySelector("#inputDocumentId").value;
+}
+
+const makeAuthorizationRequest = () => {
 
   // create a request
   const request = new AuthorizationRequest({
@@ -77,7 +79,6 @@ const makeAuthorizationRequest = () => {
 }
 
 const makeAutoAuthorizationRequest = () => {
-  scope = 'fasttrack'
   makeAuthorizationRequest()
 }
 
@@ -119,14 +120,17 @@ window.app = {
   },
   authorizeGP() {
     console.log('authorizeGP')
+    initValues()
     makeGPAuthorizationRequest()
   },
   authorizeEsign() {
     console.log('authorizeEsign')
+    initValues()
     makeEsignAuthorizationRequest()
   },
   authorizeGiropayEsign() {
     console.log('authorizeGiropayEsign')
+    initValues()
     makeGiropayEsignAuthorizationRequest()
   },
   toggleClientData() {
