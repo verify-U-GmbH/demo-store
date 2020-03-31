@@ -50,15 +50,7 @@ if (getUrlParameter('code')) {
   init()
 }
 
-const initValues = () => {
-  extras['email'] = document.querySelector("#inputEmail").value;
-  extras['msisdn'] = document.querySelector("#inputMSISDN").value;
-  extras['iban'] = document.querySelector("#inputIban").value;
-  extras['document_id'] = document.querySelector("#inputDocumentId").value;
-}
-
 const makeAuthorizationRequest = () => {
-
   // create a request
   const request = new AuthorizationRequest({
     client_id: clientId,
