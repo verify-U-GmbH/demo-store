@@ -5,7 +5,7 @@ import {
 } from '@openid/appauth'
 
 /* an example open id connect provider */
-const openIdConnectUrl = 'https://selfid.verify-u.com/oauthconfig'
+const openIdConnectUrl = 'https://app.verify-u.com/oauthconfig'
 
 /* example client configuration */
 let clientId = 'DEMO_PUB'
