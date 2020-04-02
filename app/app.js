@@ -85,13 +85,11 @@ const makeGPAuthorizationRequest = () => {
 }
 
 const makeEsignAuthorizationRequest = () => {
-  clientId = 'ESIGN_PUB'
   scope = 'esign'
   makeAuthorizationRequest()
 }
 
 const makeGiropayEsignAuthorizationRequest = () => {
-  clientId = 'ESIGN_PUB'
   scope = 'giropay_esign'
   makeAuthorizationRequest()
 }
@@ -99,6 +97,13 @@ const makeGiropayEsignAuthorizationRequest = () => {
 const toggleClientDataVisibility = () => {
   var el = document.getElementById("clientdata");
   el.classList.toggle('invisible');
+}
+
+const initValues = () => {
+  extras['email'] = document.querySelector("#inputEmail").value;
+  extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
+  extras['iban'] = document.querySelector("#inputIban").value; 
+  extras['document_id'] = document.querySelector("#inputDocumentId").value; 
 }
 
 window.app = {
