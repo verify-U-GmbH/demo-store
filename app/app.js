@@ -97,13 +97,11 @@ function makeGPAuthorizationRequest() {
 }
 
 function makeEsignAuthorizationRequest() {
-  clientId = 'ESIGN_PUB'
   scope = 'esign'
   makeAuthorizationRequest()
 }
 
 function makeGiropayEsignAuthorizationRequest() {
-  clientId = 'ESIGN_PUB'
   scope = 'giropay_esign'
   makeAuthorizationRequest()
 }
@@ -111,6 +109,13 @@ function makeGiropayEsignAuthorizationRequest() {
 function toggleClientDataVisibility() {
   var el = document.getElementById("clientdata");
   el.classList.toggle('invisible');
+}
+
+function initValues() {
+  extras['email'] = document.querySelector("#inputEmail").value;
+  extras['msisdn'] = document.querySelector("#inputMSISDN").value; 
+  extras['iban'] = document.querySelector("#inputIban").value; 
+  extras['document_id'] = document.querySelector("#inputDocumentId").value; 
 }
 
 window.app = {
